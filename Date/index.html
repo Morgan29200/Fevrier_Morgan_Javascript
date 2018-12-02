@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ng-flat-datepicker demo</title>
+<!--         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300,600' rel='stylesheet' type='text/css'> -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    </head>
+    <body ng-app="testApp" ng-strict-di>
+
+        <div ng-controller="mainController">
+
+            <h1>Ng datepicker demo</h1>
+
+            <input type="text" name="date" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="date">
+
+            <p>Ng-model input: {{ date | json }}</p>
+          
+          <p>{{ currentWeeks }}</p>
+        </div>
+
+        <!-- JS -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.2/moment-timezone-with-data-2010-2020.js"></script>
+        <!-- <script src="../node_modules/moment/locale/fr.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+
+    </body>
+</html>

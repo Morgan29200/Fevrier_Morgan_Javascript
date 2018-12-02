@@ -1,0 +1,1 @@
+Exercice sur la gestion de classe et constructeur, paramètre très poussé (modifiable ligne 184) pc sensible s'abstenir
