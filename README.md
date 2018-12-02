@@ -5,7 +5,9 @@ Mes exercices de javascript
 
 Ajax : système de map qui ne marche PAS
 
-Date : service de date
+Chat : service de chat intensif
+
+Date : service de date 
 
 Mini projet : Système de notation d'un workshop
 
