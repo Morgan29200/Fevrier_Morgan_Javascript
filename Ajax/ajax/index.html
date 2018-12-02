@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet Examples</title>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+   crossorigin=""/>
+  
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+   crossorigin=""></script>
+
+  <style type="text/css">
+   #mapid { 
+    height: 600px;
+  </style>
+
+</head>
+<body>
+
+<div id="mapid"></div>
+
+<script type="text/javascript">
+var map = L.map('mapid').setView([48.8882, 2.3853], 13);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+
+L.marker([48.8882, 2.3853]).addTo(map).bindPopup('POP up ↓').onclick().openPopup();
+
+  var lat;
+  var long;
+  var  desc;
+
+  function drawPopup(long,lat,desc){
+
+    marker = L.marker([long,lat]).addTo(mymap);
+    marker.bindPopup(desc).openPopup();
+   }
+
+  function loadOpenData(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    
+              var  dataset=JSON.parse(this.responseText);  // on parse le dataset qu'on va récuperer 
+              
+                var i;
+              for  (i in dataset.records)  // ou alors   < data.recors[9] 
+              {
+
+                  var addr= dataset.records[i].fields.adresse;   // on récupere le champs  adresse dans un records[]
+                  var lat=  dataset.records[i].geometry.coordinates[0];
+                  var long=dataset.records[i].geometry.coordinates[1];
+                  drawPopup(long,lat,addr);
+
+              }
+                //  eventsbysalle.
+            }
+  };
+  xhttp.open("GET", "https://opendata.paris.fr//api/records/1.0/search/?dataset=etablissements-scolaires", true);   //   lien  du  site  des base des ecoles primaires  
+  xhttp.send();
+}
+
+
+</script>
+
+</body>
+</html>
+
