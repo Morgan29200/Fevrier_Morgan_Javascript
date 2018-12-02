@@ -1,1 +1,0 @@
-Exercice ajax, map du monde pointant sur Paris, soucis d'ajout des pop ups collège lycée
